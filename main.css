@@ -1,0 +1,31 @@
+* {
+    font-family: 'Droid Serif', 'sans-serif';
+    letter-spacing: 1px;
+}
+
+body{
+    background-color: #36465d;
+}
+
+.header {
+	color:white;
+	margin-top:50px;
+}
+
+.header h1{
+	font-size: 3.2em;
+}
+
+.header h2{
+	font-size: 1.7em;
+}
+
+code {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+  font-size: 12px;
+  margin: 0 2px;
+  padding: 0 5px;
+}
