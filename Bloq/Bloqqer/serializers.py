@@ -7,7 +7,7 @@ class PostSerializer(serializers.ModelSerializer):
 		fields = ('username', 'title', 'description', 'date', 'id')
 
 	def create(self, validated_data):
-		id = validated_data.get()
+		id = validated_data.get('id', None)
 		title = validated_data.get('title', None)
 		username = validated_data.get('username')
 		description = validated_data.get('description', None)

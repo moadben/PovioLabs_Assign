@@ -22,9 +22,9 @@ var PostList = React.createClass({
       type: 'POST',
       data: post,
       success: function(data) {
-      //this.setState({data:data});
+      this.setState({data:data});
       var id = post.id
-      window.location.href="http://localhost:8000/bloq/" + id + "/";
+      //window.location.href="http://localhost:8000/bloq/" + id + "/";
       }.bind(this),
       error: function(xhr, status, err) {
         this.setState({data: post});
