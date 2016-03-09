@@ -1,7 +1,12 @@
-{% extends "base.html" %}
-
+{% extends 'MasterPages/MasterPage.html' %}
+{% load staticfiles %}
+{% block title %} {%endblock %}
 {% block content %}
-
+  
+  <div class="header">
+    <h1> <center> Bloq. </center></h1>
+    <h2><center> A Modern Day Blog</center></h2>
+</div>
   {% if form.errors %}
     <p class="error">Sorry, that's not a valid username or password</p>
   {% endif %}

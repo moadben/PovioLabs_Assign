@@ -10,7 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 def login(request):
     c = {}
     c.update(csrf(request))    
-    return render_to_response('login.html', c)
+    return render_to_response('Bloq/login.html', c)
     
 def auth_view(request):
     username = request.POST.get('username', '')
@@ -24,15 +24,15 @@ def auth_view(request):
         return HttpResponseRedirect('/accounts/invalid')
     
 def loggedin(request):
-    return render_to_response('loggedin.html', 
+    return render_to_response('Bloq/loggedin.html', 
                               {'full_name': request.user.username})
 
 def invalid_login(request):
-    return render_to_response('invalid_login.html')
+    return render_to_response('Bloq/invalid_login.html')
 
 def logout(request):
     auth.logout(request)
-    return render_to_response('logout.html')
+    return render_to_response('Bloq/logout.html')
 
 def register_user(request):
     if request.method == 'POST':
@@ -48,9 +48,9 @@ def register_user(request):
     
     args['form'] = form
     
-    return render_to_response('register.html', args)
+    return render_to_response('Bloq/register.html', args)
 
 
 
 def register_success(request):
-    return render_to_response('register_success.html')
+    return render_to_response('Bloq/register_success.html')
