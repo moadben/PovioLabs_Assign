@@ -29,9 +29,9 @@ class PostList(generics.ListCreateAPIView):
 	@csrf_exempt
 	def post(self, request, format=None):
 		user = request.user
-		serializer = PostSerializer(data=request.data)
+		serializer = PostSerializer(data=request.data, context={'user':user})
+		print(request.data['title'])
 		if serializer.is_valid():
-			print "We're here"
 			serializer.save()
 			return Response(serializer.data)
 		return Response(serializer.errors)

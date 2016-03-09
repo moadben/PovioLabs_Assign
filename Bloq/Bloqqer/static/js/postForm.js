@@ -17,7 +17,7 @@ var PostList = React.createClass({
      this.setState({data: newPosts});
      console.log(post)
      $.ajax({
-      url: this.props.url,
+      url: 'http://localhost:8000/bloq/api/',
       dataType: 'json',
       type: 'POST',
       data: post,
@@ -28,7 +28,7 @@ var PostList = React.createClass({
       }.bind(this),
       error: function(xhr, status, err) {
         this.setState({data: post});
-        console.error(this.props.url, status, err.toString());
+        console.error('/post/api/', status, err.toString());
       }.bind(this)
     });
    },
@@ -75,9 +75,6 @@ var CommentForm = React.createClass({
     this.setState({description: e.target.value});
   },
   handleTitleChange: function(e) {
-    var date = new Date()
-    date = date.toISOString();
-    this.setState({date: date});
     this.setState({title: e.target.value});
   },
   handleSubmit: function(e) {
@@ -85,12 +82,11 @@ var CommentForm = React.createClass({
     var username = this.state.username.trim();
     var description = this.state.description.trim();
     var title = this.state.title.trim();
-    var date = this.state.date;
     if (!username || !description || !title) {
       return;
     }
-    this.props.onCommentSubmit({username: username, title:title, description: description, date: date});
-    this.setState({username: '', description: '', title: '', date:''});
+    this.props.onCommentSubmit({username: username, title:title, description: description});
+    this.setState({username: '', description: '', title: ''});
   },
   render: function() {
     return (
