@@ -1,0 +1,19 @@
+{% extends 'MasterPages/MasterPage.html' %}
+{% load staticfiles %}
+{% block title %} {%endblock %}
+
+{% block content %}
+<div class="header">
+		<h1> <center> Bloq. </center></h1>
+		<h2><center> A Modern Day Blog</center></h2>
+	</div>
+	<h3>View Post:</h3>
+	{% if post %}
+    <ul>
+        <li><h2> {{post.username}} </h2>{{ post.description }}</li>
+    </ul>
+{% else %}
+    <p><center> No Posts are available.</center></p>
+{% endif %}
+
+{% endblock %}

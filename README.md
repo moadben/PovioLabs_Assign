@@ -1,1 +1,1 @@
-Completed: Task 1 & 2
+Completed: Task 1, 2 & 3
