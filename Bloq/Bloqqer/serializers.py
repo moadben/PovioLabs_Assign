@@ -8,6 +8,7 @@ class PostSerializer(serializers.ModelSerializer):
 
 	def create(self, validated_data):
 		print "We're here"
+		username = user.request_user
 		id = validated_data.get('id', None)
 		title = validated_data.get('title', None)
 		username = validated_data.get('username')

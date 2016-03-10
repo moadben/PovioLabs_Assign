@@ -15,10 +15,14 @@ nav {
 a { 
     /*default is underline*/
     text-decoration: none;
+    font-family: 'Droid Serif', 'sans-serif';
     /*default is blue*/
     color: white;
 }
 
+button {
+  color:black;
+}
 a:hover{
     text-decoration: underline;
 }
@@ -44,4 +48,15 @@ code {
   font-size: 12px;
   margin: 0 2px;
   padding: 0 5px;
+}
+
+.filler{
+  width:20%;
+}
+.post {
+  margin-right:50px;
+  background-color:whitesmoke;
+  text-align: center;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
 }

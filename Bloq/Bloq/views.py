@@ -1,10 +1,16 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib import auth
+from django.contrib.auth import authenticate, login
 from django.core.context_processors import csrf
 from django.core.mail import send_mail
 from forms import MyRegistrationForm
 
+
+def index(request):
+    c = {}
+    c.update(csrf(request))    
+    return render_to_response('Bloq/index.html', c)
+    
 
 
 def login(request):
@@ -19,12 +25,12 @@ def auth_view(request):
     
     if user is not None:
         auth.login(request, user)
-        return HttpResponseRedirect('/accounts/loggedin')
+        return HttpResponseRedirect('/bloq/')
     else:
         return HttpResponseRedirect('/accounts/invalid')
     
 def loggedin(request):
-    return render_to_response('Bloq/loggedin.html', 
+    return render_to_response('/bloq/', 
                               {'full_name': request.user.username})
 
 def invalid_login(request):
@@ -32,7 +38,7 @@ def invalid_login(request):
 
 def logout(request):
     auth.logout(request)
-    return render_to_response('Bloq/logout.html')
+    return HttpResponseRedirect('/')
 
 def register_user(request):
     if request.method == 'POST':

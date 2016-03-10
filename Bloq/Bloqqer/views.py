@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from models import Post
+from django.contrib.auth import authenticate, login
 from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAdminUser
 from serializers import PostSerializer
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
@@ -26,11 +28,11 @@ class PostList(generics.ListCreateAPIView):
 		serializer = PostSerializer(post, many=True)
 		return Response(serializer.data)
 
-	@csrf_exempt
+
 	def post(self, request, format=None):
 		user = request.user
+		print user
 		serializer = PostSerializer(data=request.data, context={'user':user})
-		print(request.data['title'])
 		if serializer.is_valid():
 			serializer.save()
 			return Response(serializer.data)

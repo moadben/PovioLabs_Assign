@@ -3,6 +3,11 @@
 {% block title %} {%endblock %}
 
 {% block content %}
+{% if not user.is_authenticated %}
+			<script>
+				window.location = "/";
+			</script>
+{% else %}
 <div class="header">
 		<h1> <center> Bloq. </center></h1>
 		<h2><center> A Modern Day Blog</center></h2>
@@ -11,4 +16,5 @@
 		<div id="form"></div>
 
 		 <script type="text/babel" src="{% static 'js/postForm.js' %}"></script>
+{% endif %}
 {% endblock %}
