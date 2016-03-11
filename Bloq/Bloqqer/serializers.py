@@ -1,16 +1,16 @@
 from rest_framework import serializers
 from models import Post
+from django.contrib.auth.models import User
+
 
 class PostSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Post
-		fields = ('id', 'username', 'title', 'description', 'date')
+		fields = ('id', 'user', 'username', 'title', 'description', 'date')
 
 	def create(self, validated_data):
-		print "We're here"
-		username = user.request_user
-		id = validated_data.get('id', None)
+		user = self.context.get("user")
+		username = user.username
 		title = validated_data.get('title', None)
-		username = validated_data.get('username')
 		description = validated_data.get('description', None)
-		return Post.objects.create(title=title, username=username, description=description)
+		return Post.objects.create(title=title, user=user, username=username, description=description)

@@ -1,9 +1,9 @@
+{% extends 'MasterPages/MasterPage.html'%}
 {% load staticfiles %}
-{% block title %} 
+{% block title%}Home{%endblock%}
+{% block content %}
 <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
-{%endblock %}
-{% block content %}
 
   {% if not user.is_authenticated %}
    <div class="header">
@@ -26,9 +26,13 @@
   </center>
 
   {% else %}
+{% endif %}
 
+{% if user.is_authenticated %} 
   <script>
-      window.location = "bloq/";
+      window.location = "/bloq/";
    </script>
+{% else %}
+
 {% endif %}
 {% endblock %}

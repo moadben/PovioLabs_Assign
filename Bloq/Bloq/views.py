@@ -1,9 +1,11 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login
+from django.contrib import auth
 from django.core.context_processors import csrf
 from django.core.mail import send_mail
 from forms import MyRegistrationForm
+
 
 
 def index(request):
@@ -12,26 +14,27 @@ def index(request):
     return render_to_response('Bloq/index.html', c)
     
 
-
-def login(request):
+def login_1(request):
     c = {}
     c.update(csrf(request))    
-    return render_to_response('Bloq/login.html', c)
+    return render_to_response('Bloq/index.html', c)
     
 def auth_view(request):
-    username = request.POST.get('username', '')
-    password = request.POST.get('password', '')
-    user = auth.authenticate(username=username, password=password)
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
     
     if user is not None:
-        auth.login(request, user)
-        return HttpResponseRedirect('/bloq/')
+        if user.is_active:
+            login(request, user)
+            return HttpResponseRedirect('/bloq/')
     else:
         return HttpResponseRedirect('/accounts/invalid')
     
 def loggedin(request):
-    return render_to_response('/bloq/', 
-                              {'full_name': request.user.username})
+   response = render_to_response('Bloqqer/index.html')
+   response.set_cookie(request.user.username, 'username')
+   return response
 
 def invalid_login(request):
     return render_to_response('Bloq/invalid_login.html')
@@ -55,7 +58,6 @@ def register_user(request):
     args['form'] = form
     
     return render_to_response('Bloq/register.html', args)
-
 
 
 def register_success(request):

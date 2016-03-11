@@ -6,9 +6,8 @@ from django.template import loader
 urlpatterns = [
     url(r'^bloq/', include('Bloqqer.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^index/', 'Bloq.views.index'),
-    url(r'^$', 'Bloq.views.index'),
-    url(r'^accounts/login/$', 'Bloq.views.login'),
+    url(r'^$', 'Bloq.views.login_1'),
+    url(r'^accounts/login/$', 'Bloq.views.login_1'),
     url(r'^accounts/auth/$', 'Bloq.views.auth_view'),
     url(r'^accounts/logout/$', 'Bloq.views.logout'),
     url(r'^accounts/loggedin/$', 'Bloq.views.loggedin'),

@@ -37,7 +37,7 @@ var PostList = React.createClass({
 
 var CommentForm = React.createClass({
   getInitialState: function() {
-    return {title:'', description: '', date:''};
+    return {user: '', title:'', description: '', date:''};
   },
   handleDescriptionChange: function(e) {
     this.setState({description: e.target.value});
@@ -57,7 +57,7 @@ var CommentForm = React.createClass({
   },
   render: function() {
     return (
-      <form className="commentForm" onSubmit={this.handleSubmit}>
+      <form className="commentForm create" onSubmit={this.handleSubmit}>
         <input
           type="text"
           placeholder="Say something..."
