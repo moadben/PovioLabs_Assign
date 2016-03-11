@@ -13,3 +13,7 @@ HOW TO USE:
   - Run python manage.py migrate
   - Run python manage.py runserver
   - visit localhost:8000(or what ever port you specify) and enjoy!
+
+
+Known Issues:
+  - going to the index page (localhost:8000) after login does not redirect to localhost:8000/bloq/, and instead prompts you to log in once more.
